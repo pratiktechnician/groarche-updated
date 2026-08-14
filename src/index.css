@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg-dark: #060911;
+    --color-bg-card: rgba(11, 15, 25, 0.75);
+    --color-gold-accent: #d4af37;
+    --color-gold-glow: #f59e0b;
+    --color-text-main: #ffffff;
+    --color-text-muted: #94a3b8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #060911;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  body {
+    background: radial-gradient(circle at 50% 0%, #0f172a 0%, #060911 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+/* 3D Studio Perspective & Transparent Layering System */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Translucent 3D Glass Panels allowing Background WebGL 3D Animation to Shine Through */
+.glass-panel-3d {
+  background: rgba(11, 15, 25, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transform-style: preserve-3d;
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.glass-panel-3d:hover {
+  background: rgba(15, 23, 42, 0.82);
+  border-color: rgba(212, 175, 55, 0.75);
+  box-shadow: 0 35px 70px -14px rgba(212, 175, 55, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+  transform: translateY(-8px) rotateX(3.5deg) rotateY(-2.5deg) translateZ(14px);
+}
+
+.card-3d-tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-3d-tilt:hover {
+  transform: perspective(1000px) rotateX(6deg) rotateY(-4deg) translateZ(18px);
+}
+
+/* 3D Card Stack (Depth Deck Transformation) */
+.card-stack-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.card-stack-item {
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card-stack-item-1 { transform: translateZ(40px) scale(1); z-index: 4; }
+.card-stack-item-2 { transform: translateZ(20px) translateY(12px) scale(0.96); opacity: 0.9; z-index: 3; }
+.card-stack-item-3 { transform: translateZ(0px) translateY(24px) scale(0.92); opacity: 0.8; z-index: 2; }
+.card-stack-item-4 { transform: translateZ(-20px) translateY(36px) scale(0.88); opacity: 0.7; z-index: 1; }
+
+.card-stack-container:hover .card-stack-item-2 { transform: translateZ(30px) translateY(0px) scale(0.98); opacity: 1; }
+.card-stack-container:hover .card-stack-item-3 { transform: translateZ(15px) translateY(10px) scale(0.95); opacity: 1; }
+.card-stack-container:hover .card-stack-item-4 { transform: translateZ(0px) translateY(20px) scale(0.92); opacity: 0.9; }
+
+/* 3D Scroll-Through Dimensional Typography */
+.typography-z-depth {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Magnetic 3D Buttons */
+.magnetic-3d-btn {
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.magnetic-3d-btn:hover {
+  transform: translateY(-4px) translateZ(10px) scale(1.04);
+  box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.4);
+}
+
+.magnetic-3d-btn:active {
+  transform: translateY(0px) translateZ(2px) scale(0.98);
+}
+
+/* 3D Glow and Lighting */
+.glow-gold-3d {
+  box-shadow: 0 0 45px rgba(212, 175, 55, 0.35), 0 0 90px rgba(245, 158, 11, 0.15);
+}
+
+.glow-text-gold {
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.65);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 40%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3D Keyframe Animations */
+@keyframes tunnelDrive {
+  0% { transform: translateZ(-200px) rotate(0deg); opacity: 0.2; }
+  50% { opacity: 0.8; }
+  100% { transform: translateZ(100px) rotate(360deg); opacity: 0.3; }
+}
+
+@keyframes kineticAssemble {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  50% { transform: rotateX(180deg) rotateY(90deg) rotateZ(180deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+.tunnel-3d-ring {
+  animation: tunnelDrive 14s infinite linear;
+}
+
+.kinetic-sculpture {
+  animation: kineticAssemble 20s infinite linear;
+}
+
+/* Gold Light Sweep Reflection Effect */
+.shine-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(212, 175, 55, 0.3) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg);
+  transition: transform 0.8s ease-in-out;
+  pointer-events: none;
+}
+
+.shine-sweep:hover::after {
+  transform: rotate(30deg) translate(50%, 50%);
+}
+
+/* Custom Scrollbar for 3D Studio */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060911;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Fixed Viewport Floating Container Rule */
+.floating-assistant-container {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.ai-chat-window {
+  position: fixed;
+  right: 24px;
+  bottom: 105px;
+  z-index: 100000;
+}
+
+@media (max-width: 768px) {
+  .floating-assistant-container {
+    right: 14px;
+    bottom: 16px;
+    gap: 10px;
+  }
+  .ai-chat-window {
+    right: 14px;
+    bottom: 90px;
+    width: calc(100vw - 28px);
+  }
+}
